@@ -42,7 +42,7 @@ void FenPrincipale::on_boutonQuote_clicked()
 
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) //si tu ne peux lire le fichier
     {
-        QMessageBox::critical(this, "Erreur", "Erreur à l'ouverture du fichier.<br />Faites une Mise à Jour pour télécharger les citations.");
+        QMessageBox::critical(this, "Erreur", "Erreur Ã  l'ouverture du fichier.<br />Faites une Mise Ã  Jour pour tÃ©lÃ©charger les citations.");
         FenMaj fenetreMajfav(this);
         fenetreMajfav.exec();
     }
@@ -59,7 +59,7 @@ void FenPrincipale::on_boutonQuote_clicked()
         }
         labelNbQuotes->setText(QString::number(count_nb_quotes));
         file.reset();
-        //Permet de remettre les flags du fichier à zéro, la lecture recommence au début.
+        //Permet de remettre les flags du fichier Ã  zÃ©ro, la lecture recommence au dÃ©but.
 
         int ligneQuoteChoisie = nombreAleatoire(count_nb_quotes-1);
         QString mot;
@@ -82,9 +82,9 @@ void FenPrincipale::on_boutonQuote_clicked()
                 textEditQuote->append(htmlspecialchars(lignelue));
             if (lignelue.contains(dtcExp))
             {
-                uint taille = lignelue.length(); //Taille de l'ID (on enleve les 26 premiers caractères et les 5 ".html")
-                QString idQuote = lignelue.mid(26, taille -31); //On vire les 26 permiers caractères et les 5 de la fin
-                QString urlQuote = lignelue.mid(3, taille); //On vire les 3 premiers caractères
+                uint taille = lignelue.length(); //Taille de l'ID (on enleve les 26 premiers caractÃ¨res et les 5 ".html")
+                QString idQuote = lignelue.mid(26, taille -31); //On vire les 26 permiers caractÃ¨res et les 5 de la fin
+                QString urlQuote = lignelue.mid(3, taille); //On vire les 3 premiers caractÃ¨res
                 labelIDQuote->setText("<a href='" + urlQuote + "'>#" + idQuote + " (Voir les commentaires)</a>"); //On marque l'ID de la quote
             }
         }
@@ -102,7 +102,7 @@ void FenPrincipale::on_goQuote_clicked()
 
 void FenPrincipale::on_boutonAbout_clicked()
 {
-    QMessageBox::information(this, "A propos", "Ce logiciel a été conçu par Serialtueur avec l'accord de Remouk, programmeur du site DansTonChat (http://danstonchat.com).<br /><br />Enjoy ! \\o/");
+    QMessageBox::information(this, "A propos", "Ce logiciel a Ã©tÃ© conÃ§u par Serialtueur avec l'accord de Remouk, programmeur du site DansTonChat (http://danstonchat.com).<br /><br />Enjoy ! \\o/");
 }
 
 void FenPrincipale::on_boutonMaj_clicked()
@@ -132,7 +132,7 @@ void FenPrincipale::goQuoteById(QString numberQuoteToGo)
     QFile file(QDesktopServices::storageLocation(QDesktopServices::DataLocation) + "fortunes.txt");
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) //si tu ne peux lire le fichier
     {
-        QMessageBox::critical(this, "Erreur", "Erreur à l'ouverture du fichier.<br />Faites une Mise à Jour pour télécharger les citations.");
+        QMessageBox::critical(this, "Erreur", "Erreur Ã  l'ouverture du fichier.<br />Faites une Mise Ã  Jour pour tÃ©lÃ©charger les citations.");
         FenMaj fenetreMajfav(this);
         fenetreMajfav.exec();
     }
@@ -155,7 +155,7 @@ void FenPrincipale::goQuoteById(QString numberQuoteToGo)
         }
         else
         {
-            QMessageBox::critical(this, "Erreur", "Cette citation n'existe pas. Vérifiez que vous avez correctement entré le n° ou faites une mise à jour.");
+            QMessageBox::critical(this, "Erreur", "Cette citation n'existe pas. VÃ©rifiez que vous avez correctement entrÃ© le nÂ° ou faites une mise Ã  jour.");
         }
         file.close();
     }
@@ -169,7 +169,7 @@ void FenPrincipale::on_boutonFavori_clicked()
      QFile file(QDesktopServices::storageLocation(QDesktopServices::DataLocation) + "favoris.txt");
      if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) //si tu ne peux lire le fichier
      {
-        QMessageBox::critical(this, "Erreur", "Aucun favori n'a été trouvé. Veuillez faire une Mise à Jour.");
+        QMessageBox::critical(this, "Erreur", "Aucun favori n'a Ã©tÃ© trouvÃ©. Veuillez faire une Mise Ã  Jour.");
         ouvrirMajFav();
         return;
      }
@@ -181,7 +181,7 @@ void FenPrincipale::on_boutonFavori_clicked()
         count_nb_lignes++;
         in.readLine();
      }
-     file.reset(); //Permet de remettre les flags du fichier à zéro, la lecture recommence au début.
+     file.reset(); //Permet de remettre les flags du fichier Ã  zÃ©ro, la lecture recommence au dÃ©but.
 
      int ligneMotChoisi = nombreAleatoire(count_nb_lignes-1);
      QString idQuote;

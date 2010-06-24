@@ -48,15 +48,14 @@ void FenMaj::enregistrer()
     QNetworkReply *r = qobject_cast<QNetworkReply*>(sender());
     if(r->error() != QNetworkReply::NoError)
     {
-        QMessageBox::critical(this, "Erreur", "Erreur lors du chargement. Avez vous entré le nom correctement ?<br />Vérifiez votre connexion internet ou réessayez plus tard <br /><br /> Code de l'erreur : <br /><em>" + r->errorString() + "</em>");
+        QMessageBox::critical(this, "Erreur", "Erreur lors du chargement. Avez vous entrÃ© le nom correctement ?<br />VÃ©rifiez votre connexion internet ou rÃ©essayez plus tard <br /><br /> Code de l'erreur : <br /><em>" + r->errorString() + "</em>");
     } else {
     QFile f(QDesktopServices::storageLocation(QDesktopServices::DataLocation) + "fortunes.txt");
     f.open(QIODevice::WriteOnly);
-    QString UTF8Text = QString::fromUtf8(r->readAll());
-    f.write(UTF8Text.toLocal8Bit());
+    f.write(r->readAll());
     f.close();
     r->deleteLater();
-	QMessageBox::information(this, "Fin de téléchargement", "Téléchargement terminé !");
+	QMessageBox::information(this, "Fin de tÃ©lÃ©chargement", "TÃ©lÃ©chargement terminÃ© !");
 	close();
     }
 }
@@ -89,8 +88,7 @@ void FenMaj::enregistrerFav()
         QNetworkReply *r = qobject_cast<QNetworkReply*>(sender());
         QFile f(QDesktopServices::storageLocation(QDesktopServices::DataLocation) + pseudo + ".xml");
         f.open(QIODevice::WriteOnly);
-        QString UTF8Text = QString::fromUtf8(r->readAll());
-        f.write(UTF8Text.toLocal8Bit());
+        f.write(r->readAll());
         f.close();
         r->deleteLater();
 
@@ -118,10 +116,10 @@ void FenMaj::enregistrerFav()
         xml.close();
         xml.remove();
         fileFavoris.close();
-        QMessageBox::information(this, "Fin de téléchargement", "Téléchargement terminé !");
+        QMessageBox::information(this, "Fin de tÃ©lÃ©chargement", "TÃ©lÃ©chargement terminÃ© !");
         close();
     } else {
-        QMessageBox::critical(this, "Erreur", "Impossible de récupérer la liste des favoris. Vérifiez que vous avez entré le nom correctement ainsi que l'état de votre connexion internet.");
+        QMessageBox::critical(this, "Erreur", "Impossible de rÃ©cupÃ©rer la liste des favoris. VÃ©rifiez que vous avez entrÃ© le nom correctement ainsi que l'Ã©tat de votre connexion internet.");
         close();
     }
 }
