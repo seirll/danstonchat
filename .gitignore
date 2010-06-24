@@ -1,0 +1,10 @@
+debug/
+release/
+*.o
+*.a
+*Makefile*
+moc*
+ui_*
+*.pro.user
+danstonchat
+danstonchat.exe
