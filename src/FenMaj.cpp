@@ -50,7 +50,7 @@ void FenMaj::enregistrer()
     {
         QMessageBox::critical(this, "Erreur", "Erreur lors du chargement. Avez vous entré le nom correctement ?<br />Vérifiez votre connexion internet ou réessayez plus tard <br /><br /> Code de l'erreur : <br /><em>" + r->errorString() + "</em>");
     } else {
-    QFile f(QDesktopServices::storageLocation(QDesktopServices::DataLocation) + "fortunes.txt");
+    QFile f(QDesktopServices::storageLocation(QDesktopServices::DataLocation) + "/danstonchat/fortunes.txt");
     f.open(QIODevice::WriteOnly);
     f.write(r->readAll());
     f.close();
@@ -86,16 +86,16 @@ void FenMaj::enregistrerFav()
     if (!erreurRecue)
     {
         QNetworkReply *r = qobject_cast<QNetworkReply*>(sender());
-        QFile f(QDesktopServices::storageLocation(QDesktopServices::DataLocation) + pseudo + ".xml");
+        QFile f(QDesktopServices::storageLocation(QDesktopServices::DataLocation) + "/danstonchat/" + pseudo + ".xml");
         f.open(QIODevice::WriteOnly);
         f.write(r->readAll());
         f.close();
         r->deleteLater();
 
-        QFile xml(QDesktopServices::storageLocation(QDesktopServices::DataLocation) + pseudo + ".xml");
+        QFile xml(QDesktopServices::storageLocation(QDesktopServices::DataLocation) + "/danstonchat/" + pseudo + ".xml");
         xml.open(QIODevice::ReadOnly);
 
-        QFile fileFavoris(QDesktopServices::storageLocation(QDesktopServices::DataLocation) + "favoris.txt");
+        QFile fileFavoris(QDesktopServices::storageLocation(QDesktopServices::DataLocation) + "/danstonchat/favoris.txt");
         fileFavoris.open(QIODevice::WriteOnly | QIODevice::Truncate);
         QTextStream fluxFav(&fileFavoris);
 
